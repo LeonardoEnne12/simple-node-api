@@ -36,8 +36,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
-        - uses: akhileshns/heroku-deploy@v3.12.12
-          with:
-                heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                heroku_app_name: "enne-simple-node-api"
-                heroku_email: "enne.leonardo@unifesp.br"
+        - name: Login to Heroku Container registry
+          env:
+            HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+          run: heroku container:login
+        - name: Build and push  
+          env:
+            HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+          run: heroku container:push -a ${{secrets.HEROKU_API_KEY}} web
+        - name: Release  
+          env:
+            HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+          run: heroku container:release -a ${{secrets.HEROKU_API_KEY}} web  
