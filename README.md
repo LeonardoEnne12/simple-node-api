@@ -1,6 +1,6 @@
 # Simple Node API <h1>
 
-This repository contains projects and codes related to ADO.net and Dapper, two popular technologies for data access in .NET applications.
+This is a simple project that implements an API in Node.js. The project uses JavaScript, Docker, and continuous integration. Additionally, the code deploys to Heroku.
 
 ## Content: <h2>
 
